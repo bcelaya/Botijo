@@ -1,10 +1,4 @@
 
-
-
-/**
- *
- * @author bcelaya
- */
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -102,5 +96,9 @@ public static float peticionAPILTC() {
 	float LTCValorFloat = Float.parseFloat(LTCValorString);
 	
 	return LTCValorFloat;
+}
+public static String peticionAPILetra() {
+	String laletra = MiClienteREST.request("https://api.lyrics.ovh/v1/Sisqo/Thong%20song");
+	return laletra;
 }
 }

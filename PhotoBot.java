@@ -144,7 +144,7 @@ public class PhotoBot extends TelegramLongPollingBot {
                 // Create another keyboard row
                 row = new KeyboardRow();
                 // Set each button for the second line
-                row.add("Row 2 Button 1");
+                row.add("letra cancion");
                 row.add("Row 2 Button 2");
                 row.add("Row 2 Button 3");
                 // Add the second row to the keyboard
@@ -170,18 +170,45 @@ public class PhotoBot extends TelegramLongPollingBot {
                     e.printStackTrace();
                 }
 
-            } else if (message_text.equals("Foto mía (BrIron Man)")) {
-                SendPhoto msg = new SendPhoto()
+            } else if (message_text.equals("Criptominati")) {
+                SendPhoto msg = new SendPhoto()		
                         .setChatId(chat_id)
                         .setPhoto("AgADBAAD_KwxG-urYFE269_eXvtlGMtn4xkABO-lqWpMG7bsKQEEAAEC")
-                        .setCaption("Mira que guapo que soy :-)");
+                        .setCaption("Captura de pantalla de Criptominati versión web");
+                SendMessage message = new SendMessage()
+                		.setChatId(chat_id)
+                		.setText("Criptominati es un juego que se encuentra actualmente en desarrollo, Juego de transacciones de criptomonedas por turnos.");
+                
+                try {
+                    sendPhoto(msg); // Call method to send the photo
+                    sendMessage(message);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+
+            } else if (message_text.equals("Foto de mi amigo el Capi")) {
+                SendPhoto msg = new SendPhoto()
+                        .setChatId(chat_id)
+                        .setPhoto("AgADBAADT64xG7oReFEMulohugjw30O3mxoABNXIYzhsqQ4_W4ECAAEC")
+                        .setCaption("Mira que guapos salimos el Capi y yo :-D");
 
                 try {
                     sendPhoto(msg); // Call method to send the photo
                 } catch (TelegramApiException e) {
                     e.printStackTrace();
                 }
+            } else if (message_text.equals("letra cancion")) {
+            	MiClienteREST micliente = new MiClienteREST();
+            	String letracancion = micliente.peticionAPILetra();
+            	SendMessage message = new SendMessage()
+                		.setChatId(chat_id)
+                		.setText(letracancion);
 
+                try {
+                    sendMessage(message); // Call method to send the photo
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
                 
             } else if (message_text.equals("/hide")) {
                 SendMessage msg = new SendMessage()
@@ -239,13 +266,13 @@ public class PhotoBot extends TelegramLongPollingBot {
     public String getBotUsername() {
         // Return bot username
         // If bot username is @MyAmazingBot, it must return 'MyAmazingBot'
-        return "nombrebot";
+        return "brunozelaiabot";
     }
 
     @Override
     public String getBotToken() {
         // Return bot token from BotFather
-        return "apinumeritosraros:masnumerosraros";
+        return "617944826:AAESAQU2OG9nZYy1ZI4QfoTQRNT9_-jpvD0";
     }
     
 }
